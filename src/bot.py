@@ -43,9 +43,9 @@ class AutoKickBot(commands.Bot):
         config_count = len(self.guild_configs)
         
         if member_count > 0:
-            print(f"✅ Loaded {member_count} tracked member(s)")
+            print(f"[+] Loaded {member_count} tracked member(s)")
         if config_count > 0:
-            print(f"✅ Loaded configs for {config_count} server(s)")
+            print(f"[+] Loaded configs for {config_count} server(s)")
     
     def save_data(self):
         """Save data to JSON files"""
@@ -78,9 +78,9 @@ class AutoKickBot(commands.Bot):
         # Sync slash commands
         try:
             synced = await self.tree.sync()
-            print(f"✅ Synced {len(synced)} slash command(s)")
+            print(f"[+] Synced {len(synced)} slash command(s)")
         except Exception as e:
-            print(f"❌ Failed to sync slash commands: {e}")
+            print(f"[-] Failed to sync slash commands: {e}")
 
     async def log_kick(self, guild, member, time_unverified_minutes):
         """Send a professional log message to the configured log channel"""
@@ -132,9 +132,9 @@ class AutoKickBot(commands.Bot):
         try:
             await log_channel.send(embed=embed)
         except discord.Forbidden:
-            print(f"  ⚠️ Missing permissions to send logs to channel {log_channel.name}")
+            print(f"[-] Missing permissions to send logs to channel {log_channel.name}")
         except Exception as e:
-            print(f"  ⚠️ Error sending log: {e}")
+            print(f"[-] Error sending log: {e}")
 
 
 def create_bot():

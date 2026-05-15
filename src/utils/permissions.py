@@ -1,6 +1,3 @@
-"""
-Permission checking utilities
-"""
 import discord
 from discord.ext import commands
 
@@ -47,6 +44,6 @@ def get_permission_error_message(bot, guild_id):
     
     if allowed_roles:
         roles_list = ", ".join([f"`{role}`" for role in allowed_roles])
-        return f"❌ You need Administrator permission or one of these roles: {roles_list}"
+        return f"[!] You need Administrator permission or one of these roles: {roles_list}"
     else:
-        return "❌ You need Administrator permission to use this command."
+        return "[!] You need Administrator permission to use this command."

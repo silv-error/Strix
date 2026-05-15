@@ -1,6 +1,3 @@
-"""
-Data management utilities for loading and saving bot data
-"""
 import json
 import os
 from src.config import MEMBERS_DATA_FILE, GUILD_CONFIG_FILE
@@ -25,7 +22,7 @@ class DataManager:
                         for guild_id, members in data.items()
                     }
             except Exception as e:
-                print(f"❌ Error loading member data: {e}")
+                print(f"[-] Error loading member data: {e}")
                 return {}
         return {}
     
@@ -42,7 +39,7 @@ class DataManager:
                         for guild_id, config in data.items()
                     }
             except Exception as e:
-                print(f"❌ Error loading guild configs: {e}")
+                print(f"[-] Error loading guild configs: {e}")
                 return {}
         return {}
     
@@ -60,5 +57,5 @@ class DataManager:
                 
             return True
         except Exception as e:
-            print(f"❌ Error saving data: {e}")
+            print(f"[-] Error saving data: {e}")
             return False

@@ -28,9 +28,7 @@ def main():
         TOKEN = os.getenv('DISCORD_BOT_TOKEN')
         
         if not TOKEN:
-            print("❌ ERROR: No bot token provided!")
-            print("Usage: python main.py YOUR_BOT_TOKEN")
-            print("Or set DISCORD_BOT_TOKEN environment variable")
+            print("[!] No bot token provided!")
             sys.exit(1)
     
     # Create bot instance
@@ -47,35 +45,23 @@ def main():
     @bot.event
     async def on_ready():
         print('=' * 50)
-        print(f'✅ Bot is ready! Logged in as {bot.user.name} (ID: {bot.user.id})')
-        print(f'📊 Connected to {len(bot.guilds)} server(s)')
-        print(f'🎯 Default role: {UNVERIFIED_ROLE_NAME}')
-        print(f'⏱️  Default kick timer: {KICK_AFTER_MINUTES} minutes')
-        print(f'🔄 Check interval: {CHECK_INTERVAL_MINUTES} minutes')
-        print('💡 Use /setup or !setup to configure settings')
-        print('💡 Use /help or !autokick_help for all commands')
+        print(f'[*] Logged in as {bot.user.name} (ID: {bot.user.id})')
+        print(f'[*] Connected to {len(bot.guilds)} server(s)')
+        print(f'[*] Default role: {UNVERIFIED_ROLE_NAME}')
+        print(f'[*] Default kick timer: {KICK_AFTER_MINUTES} minutes')
+        print(f'[*] Check interval: {CHECK_INTERVAL_MINUTES} minutes')
         print('=' * 50)
         
         # Scan existing members
         await scan_existing_members(bot)
     
-    # Start the bot
-    print("🚀 Starting Auto-Kick Bot...")
-    print("📁 File structure: Organized")
-    print("⚙️  Configuration: config.py")
-    print("🔧 Utilities: utils/")
-    print("🎮 Commands: commands/")
-    print("📡 Events: events/")
-    print("⏰ Tasks: tasks.py")
-    print()
-    
     try:
         bot.run(TOKEN)
     except KeyboardInterrupt:
-        print("\n\n👋 Bot shutting down...")
+        print("\n\n[!] Bot shutting down...")
         sys.exit(0)
     except Exception as e:
-        print(f"\n❌ Error starting bot: {e}")
+        print(f"\n[!] Error starting bot: {e}")
         sys.exit(1)
 
 

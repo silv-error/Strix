@@ -1,6 +1,3 @@
-"""
-Logging utilities for sending kick logs to Discord channels
-"""
 import discord
 from datetime import datetime
 from src.config import COLOR_DARK
@@ -63,8 +60,8 @@ async def send_kick_log(guild, member, time_unverified_minutes, log_channel_id, 
         await log_channel.send(embed=embed)
         return True
     except discord.Forbidden:
-        print(f"  ⚠️ Missing permissions to send logs to channel {log_channel.name}")
+        print(f"[-] Missing permissions to send logs to channel {log_channel.name}")
         return False
     except Exception as e:
-        print(f"  ⚠️ Error sending log: {e}")
+        print(f"[-] Error sending log: {e}")
         return False
